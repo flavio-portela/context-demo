@@ -1,10 +1,13 @@
 import React from "react";
 import Joke from "./Joke";
-
+import { JokeProvider, JokeContext } from "./JokeContext";
 function App() {
   return (
     <div>
-      <Joke />
+      <JokeProvider>
+        <Joke />
+        <JokeContext.Consumer>{({ joke }) => joke}</JokeContext.Consumer>
+      </JokeProvider>
     </div>
   );
 }

@@ -2,17 +2,26 @@
 import { jsx } from "@emotion/core";
 import classNames from "classnames";
 import styles from "./styles";
-
+const Item = ({ className, onClick, children }) => {
+  return (
+    <li
+      className={className}
+      onClick={onClick}
+    >
+      {children}
+    </li>
+  );
+};
 function Categories({ setCategory, category }) {
   return (
     <div css={styles}>
       <ul>
-        <li
+        <Item
           className={classNames({ selected: category === "dev" })}
-          onClick={() => setCategory("dev")}
+          onClick={() => setCategory("career")}
         >
-          dev
-        </li>
+          SOMETHING ELSE
+        </Item>
         <li
           className={classNames({ selected: category === "career" })}
           onClick={() => setCategory("career")}
