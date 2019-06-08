@@ -1,17 +1,17 @@
 /** @jsx jsx */
 import React from "react";
+import { compose } from 'redux';
 import { jsx } from "@emotion/core";
 import styles from "./styles";
-import Categories from "../Categories";
 import notFunnyImage from "../../images/notFunny.png";
 import funnyImage from "../../images/funny.jpg";
 import withJokeHOC from "../withJokeHOC";
 
-const Joke = ({ fetchNewJoke, joke, loading }) => {
+const Joke = ({ fetchNewJoke, joke, loading, name }) => {
   return (
     <div css={styles}>
       <div className="newJokeBtn">
-        <button onClick={fetchNewJoke}>Fetch it you coward!</button>
+        <button onClick={fetchNewJoke}>{`Fetch it you ${name}!`}</button>
       </div>
       <div className="joke">
         {loading ? (
@@ -29,4 +29,6 @@ const Joke = ({ fetchNewJoke, joke, loading }) => {
   );
 };
 
-export default withJokeHOC(Joke);
+export default compose(
+  withJokeHOC('Flavio'),
+)(Joke)
